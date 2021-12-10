@@ -1,57 +1,0 @@
-steps++; //for i=1for (int i=1; i<n; i++){	steps+=2; //for i<n; and i++;	int temp=A[i];	int j=i-1;	steps+=2; //for the above two statements	while (j>=0 && temp<A[j])	{		A[j+1]=A[j];		steps+=3; //for two conditions in while loop and A[j+1]=A[j]	}	if (j<0) steps++;	else steps+=2;.....}steps++;//program for cpu timevoid insertionsort(int A[], int n){for (int i=1; i<n; i++){	int temp=A[i];	int j=i-1;	while (j>=0 && temp<A[j])	{		A[j+1]=A[j];	}.....}}clock_t starttime=clock();insertionsort(A, n);clock_t endtime=clock();cout<<"cpu time for insertion sort is" << float(endtime-starttime)*1000/CLOCKS_PER_SECOND;
-
-
-
-
-
-Part Iint Nval[4]={100, 300, 500, 1000};//you can also use enumfor (int v=0 to 4)// working on Nval[v] numbers{	int *A=new int[Nval[v]];	//increasing numbers	//get the input in the increasing order	for (int i=0 to Nval[v]-1)		A[i]=i+1;	//copy array A to array copyArray	clock_t starttime=clock();	insertionsort(A, n);	clock_t endtime=clock();	//copy the numbers from copyArray to A	Mergesort(A,0, n-1);	//same as other sorting algorithms....	//decreasing number	for (int i=0 to Nval[v]-1)		A[i]=n-i;	//copy array A to array copyArray	Inserttionsort(A, n);	//copy the numbers from copyArray to A	Mergesort(A, 0, n-1);	//same as other sorting algorithms....	//random permutation	for (int i=0 to Nval[v]-1)		A[i]=i+1;	//do something to change A to a random permutation, do research and find the method	//copy array A to array copyArray	Inserttionsort(A, n);	//copy the numbers from copyArray to A	Mergesort(A, 0, n-1);	//same as other sorting algorithms....}
-
-Part IIint Nval[4]={100, 300, 500, 1000};//you can also use enumfloat totalInsertion=0.0;for (int v=0 to 4)// working on Nval[v] numbers{	int *A=new int[Nval[v]];	for (int numofruns= 1 to 50)	{		generate Nval[v] random numbers and fill in array A		//copy array A to array copyArray		clock_t starttime=clock();		insertionsort(A, n);		clock_t endtime=clock();		totalInsertion+=float(endtime-starttime)*1000/CLOCKS_PER_SECOND;		//copy the numbers from copyArray to A		Mergesort(A, 0, n-1);		//same as other sorting algorithms....	}	print out the average time for insertion sort which is totalInsertion/50	.....}
-
-
-
-
-may 17 2021:
-
-Balanced Binary search tree: for any node in a binary search tree, if the heights of its left subtreee and right subtree differ less than 2, its a Balanced binary search tree 
--AVL
--Red-Black tree
--1,2,3 tree
-
-AVL tree
--search, insert, delete is O(logn)
-for the insert/delete operation, rebalancing is implemented by rotation.
-a b c d e f r
-tree:		a								b
-			  b			----->			   a  c			
-			    c					left rotation.
-insert d:
-			b
-		   a  c
-		       d
-insert e:
-			b								b
-		   a  c		    ------>           a    d
-		       d                              c  e
-			    e
-insert f:
-			  b								  d
-			a    d						   b		e
-			    c  e        -------->    a  c	      f
-					 f
-insert r:
-			d									d
-		b		e							b        f
-	   a c        f          ----->        a  c     e  r
-	                r
-insert m:
-			d
-		b		   f
-	  a   d      e   r	
-			    m
-insert h
-			d								   d
-		b		   f					   b         f
-	  a   d      e   r	------>			 a  c      e   m
-			    m									  h r
-			   h
